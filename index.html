@@ -428,7 +428,6 @@
       display: flex;
       width: max-content;
       gap: 18px;
-      animation: logoMove 8s linear infinite;
       will-change: transform;
     }
 
@@ -458,19 +457,95 @@
       object-fit: contain;
     }
 
-    @keyframes logoMove {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
     .service-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
+    }
+
+    .services-showcase {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+      margin: 0 0 28px;
+      border: 1px solid rgba(200, 168, 93, 0.18);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #090b0c;
+      box-shadow: var(--shadow);
+    }
+
+    .services-showcase-media {
+      min-height: 330px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-showcase-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .services-showcase-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 48%, rgba(9, 11, 12, 0.8));
+      pointer-events: none;
+    }
+
+    .services-showcase-copy {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .showcase-pill {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .showcase-pill i {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      color: var(--ink);
+      background: var(--gold);
+    }
+
+    .showcase-pill:nth-child(2) i {
+      background: var(--teal);
+    }
+
+    .showcase-pill:nth-child(3) i {
+      background: var(--coral);
+    }
+
+    .showcase-pill strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .showcase-pill span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.84rem;
     }
 
     .service-card,
@@ -707,7 +782,8 @@
     }
 
     .tour-card {
-      padding: 22px;
+      padding: 0;
+      overflow: hidden;
       transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
     }
 
@@ -715,6 +791,46 @@
       transform: translateY(-4px);
       border-color: var(--line-strong);
       background: rgba(255, 255, 255, 0.055);
+    }
+
+    .tour-thumb {
+      position: relative;
+      aspect-ratio: 1.55;
+      overflow: hidden;
+      background: #070808;
+    }
+
+    .tour-thumb img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.28s ease;
+    }
+
+    .tour-card:hover .tour-thumb img {
+      transform: scale(1.04);
+    }
+
+    .tour-thumb::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 58%;
+      background: linear-gradient(transparent, rgba(8, 9, 9, 0.86));
+      pointer-events: none;
+    }
+
+    .tour-thumb .tour-tag {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      z-index: 2;
+      backdrop-filter: blur(10px);
+    }
+
+    .tour-card-body {
+      padding: 22px;
     }
 
     .tour-tag,
@@ -1329,6 +1445,7 @@
       }
 
       .section-head,
+      .services-showcase,
       .tour-layout,
       .web-intro,
       .contact-grid,
@@ -1344,6 +1461,14 @@
       .testimonial-grid,
       .process-grid {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .services-showcase-media {
+        min-height: 280px;
+      }
+
+      .services-showcase-media::after {
+        background: linear-gradient(180deg, transparent 48%, rgba(9, 11, 12, 0.78));
       }
 
       .tour-copy {
@@ -1396,7 +1521,6 @@
         width: 100%;
       }
 
-      .hero-proof,
       .service-grid,
       .web-grid,
       .testimonial-grid,
@@ -1405,8 +1529,12 @@
         grid-template-columns: 1fr;
       }
 
-      .hero-proof {
-        display: none;
+      .services-showcase-copy {
+        padding: 20px;
+      }
+
+      .services-showcase-media {
+        min-height: 220px;
       }
 
       .section-title {
@@ -1512,11 +1640,6 @@
         <div class="logo-item"><img src="assets/brand-podovital.svg" alt=""></div>
         <div class="logo-item"><img src="assets/brand-bbsclub.png" alt=""></div>
         <div class="logo-item"><img src="assets/logo-perspective-nav.png" alt=""></div>
-        <div class="logo-item"><img src="assets/brand-etnika.png" alt=""></div>
-        <div class="logo-item"><img src="assets/brand-san-luis.png" alt=""></div>
-        <div class="logo-item"><img src="assets/brand-podovital.svg" alt=""></div>
-        <div class="logo-item"><img src="assets/brand-bbsclub.png" alt=""></div>
-        <div class="logo-item"><img src="assets/logo-perspective-nav.png" alt=""></div>
       </div>
     </div>
 
@@ -1528,6 +1651,35 @@
             <h2 class="section-title">Una oferta digital en <span>tres niveles.</span></h2>
           </div>
           <p class="section-copy">El objetivo no es solo verse mejor: es que el cliente pueda conocer, confiar y contactar sin fricci&oacute;n. Por eso unimos contenido visual, dise&ntilde;o web y herramientas pr&aacute;cticas.</p>
+        </div>
+
+        <div class="services-showcase">
+          <div class="services-showcase-media">
+            <img src="assets/services-ai-visual.webp" alt="Visual de servicios digitales: tour 360, sitio web y sistema de gesti&oacute;n" loading="lazy">
+          </div>
+          <div class="services-showcase-copy" aria-label="Resumen visual de servicios">
+            <div class="showcase-pill">
+              <i><span data-lucide="scan-search" aria-hidden="true"></span></i>
+              <div>
+                <strong>Mostrar espacios</strong>
+                <span>Recorridos 360 para que el cliente pueda explorar antes de visitar.</span>
+              </div>
+            </div>
+            <div class="showcase-pill">
+              <i><span data-lucide="monitor-smartphone" aria-hidden="true"></span></i>
+              <div>
+                <strong>Convertir visitas</strong>
+                <span>P&aacute;ginas web claras, visuales y listas para contacto directo.</span>
+              </div>
+            </div>
+            <div class="showcase-pill">
+              <i><span data-lucide="database-zap" aria-hidden="true"></span></i>
+              <div>
+                <strong>Ordenar procesos</strong>
+                <span>Sistemas internos para historial, clientes y gesti&oacute;n operativa.</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="service-grid">
@@ -1624,24 +1776,39 @@
 
         <div class="tour-grid" aria-label="Tours disponibles">
           <article class="tour-card">
-            <span class="tour-tag">Restaurante</span>
-            <h3>Casa Blanca - Curacaut&iacute;n</h3>
-            <p>Recorrido para mostrar salones, ambiente y experiencia gastron&oacute;mica desde antes de la reserva.</p>
-            <button class="btn ghost open-tour" type="button" data-tour="0">Abrir tour <i data-lucide="maximize-2" aria-hidden="true"></i></button>
+            <div class="tour-thumb">
+              <img src="assets/tour-casa-blanca.webp" alt="Portada del tour virtual Casa Blanca Curacaut&iacute;n" loading="lazy">
+              <span class="tour-tag">Restaurante</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Casa Blanca - Curacaut&iacute;n</h3>
+              <p>Recorrido para mostrar salones, ambiente y experiencia gastron&oacute;mica desde antes de la reserva.</p>
+              <button class="btn ghost open-tour" type="button" data-tour="0">Abrir tour <i data-lucide="maximize-2" aria-hidden="true"></i></button>
+            </div>
           </article>
 
           <article class="tour-card">
-            <span class="tour-tag">Refugios</span>
-            <h3>Refugios San Luis</h3>
-            <p>Experiencia inmersiva para alojamientos de monta&ntilde;a, ideal para mostrar entorno y comodidades.</p>
-            <button class="btn ghost open-tour" type="button" data-tour="1">Abrir tour <i data-lucide="maximize-2" aria-hidden="true"></i></button>
+            <div class="tour-thumb">
+              <img src="assets/tour-san-luis.webp" alt="Portada del tour virtual Refugios San Luis" loading="lazy">
+              <span class="tour-tag">Refugios</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Refugios San Luis</h3>
+              <p>Experiencia inmersiva para alojamientos de monta&ntilde;a, ideal para mostrar entorno y comodidades.</p>
+              <button class="btn ghost open-tour" type="button" data-tour="1">Abrir tour <i data-lucide="maximize-2" aria-hidden="true"></i></button>
+            </div>
           </article>
 
           <article class="tour-card">
-            <span class="tour-tag">Inmobiliaria</span>
-            <h3>Depto. Curitiba City Home</h3>
-            <p>Tour para acelerar decisiones de arriendo o compra mostrando distribuci&oacute;n real del departamento.</p>
-            <button class="btn ghost open-tour" type="button" data-tour="2">Abrir tour <i data-lucide="maximize-2" aria-hidden="true"></i></button>
+            <div class="tour-thumb">
+              <img src="assets/tour-curitiba.webp" alt="Portada del tour virtual departamento Curitiba City Home" loading="lazy">
+              <span class="tour-tag">Inmobiliaria</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Depto. Curitiba City Home</h3>
+              <p>Tour para acelerar decisiones de arriendo o compra mostrando distribuci&oacute;n real del departamento.</p>
+              <button class="btn ghost open-tour" type="button" data-tour="2">Abrir tour <i data-lucide="maximize-2" aria-hidden="true"></i></button>
+            </div>
           </article>
         </div>
       </div>
@@ -1987,15 +2154,35 @@
       const track = document.querySelector(".logo-track");
       if (!track) return;
 
-      track.style.animation = "none";
+      const seedItems = Array.from(track.children).map((item) => item.cloneNode(true));
       let x = 0;
       let last = performance.now();
-      const speed = 120;
+      let loopWidth = 1;
+      const speed = 42;
+
+      function buildTrack() {
+        track.innerHTML = "";
+
+        seedItems.forEach((item) => track.appendChild(item.cloneNode(true)));
+        seedItems.forEach((item) => track.appendChild(item.cloneNode(true)));
+        loopWidth = track.children[seedItems.length]
+          ? track.children[seedItems.length].offsetLeft - track.children[0].offsetLeft
+          : track.scrollWidth / 2;
+
+        while (track.scrollWidth < window.innerWidth * 2.4) {
+          seedItems.forEach((item) => track.appendChild(item.cloneNode(true)));
+        }
+      }
+
+      buildTrack();
+      window.addEventListener("resize", () => {
+        x = 0;
+        buildTrack();
+      }, { passive: true });
 
       function animate(now) {
         const delta = Math.min(now - last, 64);
         last = now;
-        const loopWidth = track.scrollWidth / 2;
         x -= speed * (delta / 1000);
         if (loopWidth > 0 && Math.abs(x) >= loopWidth) {
           x += loopWidth;
